@@ -1,4 +1,4 @@
 # optoforce
-ROS Package for optofoce force torque sensor with EtherCat.
+ROS Package for optofoce force torque sensor with EtherCat Communication.
 
 The Project is based on ROS Kinetic version.
