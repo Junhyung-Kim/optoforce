@@ -17,6 +17,7 @@
 #define PORT			49152	/* Port the Ethernet DAQ always uses */
 #define SAMPLE_COUNT	10		/* 10 incoming samples */
 #define SPEED			1 	/* 1000 / SPEED = Speed in Hz */
+
 #define FILTER			4		/* 0 = No filter; 1 = 500 Hz; 2 = 150 Hz; 3 = 50 Hz; 4 = 15 Hz; 5 = 5 Hz; 6 = 1.5 Hz */
 #define BIASING_ON		0xFF    /* Biasing on */
 #define BIASING_OFF		0x00    /* Biasing off */
