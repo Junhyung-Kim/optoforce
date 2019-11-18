@@ -26,17 +26,21 @@ int main(int argc, char **argv)
   ft.SendCommand(&socketHandle, COMMAND_FILTER, FILTER);
   ft.SendCommand(&socketHandle, COMMAND_BIAS, BIASING_OFF);
 
-  while(ros::ok())
+  ft.SendCommand(&socketHandle, COMMAND_START, SAMPLE_COUNT);
+  for (i = 0; i < SAMPLE_COUNT; ++i)
   {
-    ft.SendCommand(&socketHandle, COMMAND_START, SAMPLE_COUNT);
-    for (i = 0; i < SAMPLE_COUNT; ++i)
+    if (i == SAMPLE_COUNT / 2)
     {
-      if (i == SAMPLE_COUNT / 2)
-      {
-        ft.SendCommand(&socketHandle, COMMAND_BIAS, BIASING_ON);
-      }
-      r = ft.Receive(&socketHandle);
+      ft.SendCommand(&socketHandle, COMMAND_BIAS, BIASING_ON);
     }
+    //r = ft.Receive(&socketHandle);
+    ft.ShowResponse(r);
+  }
+
+  while(1)
+  {
+    ft.SendCommand(&socketHandle, COMMAND_START, 1);
+    r = ft.Receive(&socketHandle);
     ft.ftPublish(r);
     ros::spinOnce();
   }
